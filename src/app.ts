@@ -1,67 +1,24 @@
-import fastifySwagger from "@fastify/swagger";
-import fastifySwaggerUi from "@fastify/swagger-ui";
+import "dotenv/config";
 import Fastify from "fastify";
-import { jsonSchemaTransform, type ZodTypeProvider } from "fastify-type-provider-zod";
+import {
+  serializerCompiler,
+  validatorCompiler,
+} from "fastify-type-provider-zod";
+
+import { generateDocumentation } from "./docs/swagger";
 import { auth } from "./lib/auth";
-import fastifyCors from "@fastify/cors";
-import fastifyApiReference from "@scalar/fastify-api-reference";
-
-export const app = Fastify();
-
-// Register Swagger/OpenAPI documentation
-await app.register(fastifySwagger, {
-  openapi: {
-    info: {
-      title: "Fit AI API",
-      description: "API for Fit AI application",
-      version: "1.0.0",
-    },
-    servers: [
-      {
-        description: "Local development server",
-        url: "http://localhost:3000",
-      },
-    ],
-  },
-  transform: jsonSchemaTransform
-})
-
-// Register Swagger UI
-await app.register(fastifyApiReference, {
-  routePrefix: "/docs",
-  configuration: {
-    sources: [
-      {
-        title: "Fit AI API",
-        slug: "fit-ai-api",
-        url: "/swagger.json",
-      },
-      {
-        title: "Auth API",
-        slug: "auth-api",
-        url: "/api/auth/open-api/generate-schema",
-      },
-    ],
-  },
-});
-
-app.withTypeProvider<ZodTypeProvider>().route({
-  method: "GET",
-  url: "/swagger.json",
-  schema: {
-    hide: true,
-  },
-  handler: async () => {
-    return app.swagger();
-  },
-});
+import { workoutPlanController } from "./controllers/WorkoutPlanController";
 
 
-// CORS configuration
-await app.register(fastifyCors, {
-  origin: ['http://localhost:5173'],
-  credentials: true,
-})
+export const app = Fastify({ logger: true });
+
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
+
+await generateDocumentation(app);
+
+await workoutPlanController(app);
 
 // Authentication endpoint (BetterAuth)
 app.route({
@@ -98,3 +55,4 @@ app.route({
     }
   }
 });
+

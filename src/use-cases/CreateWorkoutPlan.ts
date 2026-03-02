@@ -1,5 +1,5 @@
 import { NotFoundError } from "../errors/error";
-import type { WorkoutRepository } from "../repositories/workoutRepository";
+import type { WorkoutRepository } from "../repositories/workout-repository";
 
 interface Input {
   name: string;
@@ -18,7 +18,9 @@ export class CreateWorkoutPlan {
     const existing = await this.repository.findActiveByUserId(data.userId);
 
     if (existing) {
-      throw new NotFoundError("An active workout plan already exists for this user");
+      throw new NotFoundError(
+        "An active workout plan already exists for this user",
+      );
     }
 
     const workout = await this.repository.create(data);

@@ -6,10 +6,10 @@ import { fromNodeHeaders } from "better-auth/node";
 import { NotFoundError } from "../errors/error";
 import { ErrorSchema, WorkoutPlanSchema } from "../schema";
 
-export async function workoutPlanController(app: FastifyInstance) {
+export async function workoutPlanRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().route({
     method: "POST",
-    url: "/workout-plans",
+    url: "/",
     schema: {
       tags: ["Workout Plans"],
       summary: "Create a new workout plan",

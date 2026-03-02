@@ -7,7 +7,7 @@ import {
 
 import { generateDocumentation } from "./docs/swagger";
 import { auth } from "./lib/auth";
-import { workoutPlanController } from "./controllers/WorkoutPlanController";
+import { workoutPlanRoutes } from "./routes/workout-plan";
 
 
 export const app = Fastify({ logger: true });
@@ -18,7 +18,7 @@ app.setSerializerCompiler(serializerCompiler);
 
 await generateDocumentation(app);
 
-await workoutPlanController(app);
+app.register(workoutPlanRoutes, { prefix: "/workout-plans" });
 
 // Authentication endpoint (BetterAuth)
 app.route({

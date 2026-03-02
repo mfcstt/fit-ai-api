@@ -3,7 +3,7 @@ import { prisma } from "../../lib/auth";
 import type {
   CreateWorkoutPlanDTO,
   WorkoutRepository,
-} from "../workoutRepository";
+} from "../workout-repository";
 
 export class PrismaWorkoutRepository implements WorkoutRepository {
   async create(data: CreateWorkoutPlanDTO) {

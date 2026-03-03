@@ -86,6 +86,20 @@ export interface WorkoutPlanWithDays {
   }[];
 }
 
+export interface WorkoutPlanSummary {
+  id: string;
+  name: string;
+  isActive: boolean;
+  workoutDays: {
+    id: string;
+    weekDay: WeekDay;
+    isRest: boolean;
+    coverImageUrl: string | null;
+    estimatedDurationInSeconds: number;
+    exercisesCount: number;
+  }[];
+}
+
 export interface FindWorkoutDayByIdDTO {
   workoutPlanId: string;
   workoutDayId: string;
@@ -145,6 +159,7 @@ export interface WorkoutRepository {
   findWorkoutPlanById(
     data: FindWorkoutPlanByIdDTO,
   ): Promise<WorkoutPlanWithDays | null>;
+  findWorkoutPlansByUserId(userId: string): Promise<WorkoutPlanSummary[]>;
   findWorkoutDayById(
     data: FindWorkoutDayByIdDTO,
   ): Promise<WorkoutDayWithDetails | null>;

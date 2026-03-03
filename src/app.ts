@@ -9,6 +9,9 @@ import { generateDocumentation } from "./docs/swagger";
 import { auth } from "./lib/auth";
 import { homeRoutes } from "./routes/home";
 import { workoutPlanRoutes } from "./routes/workout-plan";
+import { statsRoutes } from "./routes/stats";
+import { meRoutes } from "./routes/me";
+import { aiRoutes } from "./routes/ai";
 
 export const app = Fastify({ logger: true });
 
@@ -19,6 +22,9 @@ await generateDocumentation(app);
 
 app.register(homeRoutes, { prefix: "/home" });
 app.register(workoutPlanRoutes, { prefix: "/workout-plans" });
+app.register(statsRoutes);
+app.register(meRoutes, { prefix: "/me" });
+app.register(aiRoutes);
 
 // Authentication endpoint (BetterAuth)
 app.route({

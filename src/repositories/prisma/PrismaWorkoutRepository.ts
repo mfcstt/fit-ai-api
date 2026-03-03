@@ -283,6 +283,50 @@ export class PrismaWorkoutRepository implements WorkoutRepository {
     };
   }
 
+  async findWorkoutPlansByUserId(userId: string) {
+    const workoutPlans = await prisma.workoutPlan.findMany({
+      where: {
+        userId,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        name: true,
+        isActive: true,
+        workoutDays: {
+          select: {
+            id: true,
+            weekDay: true,
+            isRest: true,
+            coverImageUrl: true,
+            estimatedDurationInSeconds: true,
+            _count: {
+              select: {
+                workoutExercises: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return workoutPlans.map((workoutPlan) => ({
+      id: workoutPlan.id,
+      name: workoutPlan.name,
+      isActive: workoutPlan.isActive,
+      workoutDays: workoutPlan.workoutDays.map((workoutDay) => ({
+        id: workoutDay.id,
+        weekDay: workoutDay.weekDay,
+        isRest: workoutDay.isRest,
+        coverImageUrl: workoutDay.coverImageUrl,
+        estimatedDurationInSeconds: workoutDay.estimatedDurationInSeconds,
+        exercisesCount: workoutDay._count.workoutExercises,
+      })),
+    }));
+  }
+
   async findWorkoutDayById(data: FindWorkoutDayByIdDTO) {
     const workoutDay = await prisma.workoutDay.findFirst({
       where: {

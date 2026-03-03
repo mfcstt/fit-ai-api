@@ -158,3 +158,14 @@ export const GetStatsResponseSchema = z.object({
   conclusionRate: z.number().min(0),
   totalTimeInSeconds: z.number().int().min(0),
 });
+
+export const UserTrainDataSchema = z.object({
+  userId: z.string(),
+  userName: z.string(),
+  weightInGrams: z.number(),
+  heightInCentimeters: z.number(),
+  age: z.number(),
+  bodyFatPercentage: z.number(),
+});
+
+export const GetMeResponseSchema = z.union([UserTrainDataSchema, z.null()]);

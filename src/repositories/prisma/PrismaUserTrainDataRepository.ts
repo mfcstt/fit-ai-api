@@ -1,8 +1,8 @@
-import { prisma } from "../../lib/auth";
+import { prisma } from "../../lib/auth.js";
 import type {
   UpsertUserTrainDataDTO,
   UserTrainDataRepository,
-} from "../user-train-data-repository";
+} from "../user-train-data-repository.js";
 
 interface UserTrainDataRow {
   userId: string;

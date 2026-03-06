@@ -1,5 +1,5 @@
-import type { WeekDay } from "../../generated/prisma/enums";
-import { prisma } from "../../lib/auth";
+import type { WeekDay } from "../../generated/prisma/enums.js";
+import { prisma } from "../../lib/auth.js";
 import type {
   CountCompletedSessionsOnDateDTO,
   CreateWorkoutPlanDTO,
@@ -11,7 +11,7 @@ import type {
   StartWorkoutSessionDTO,
   UpdateWorkoutSessionDTO,
   WorkoutRepository,
-} from "../workout-repository";
+} from "../workout-repository.js";
 
 export class PrismaWorkoutRepository implements WorkoutRepository {
   async create(data: CreateWorkoutPlanDTO) {

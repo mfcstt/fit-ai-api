@@ -1,4 +1,4 @@
-import type { WeekDay } from "../generated/prisma/enums";
+import type { WeekDay } from "../generated/prisma/enums.js";
 
 export interface CreateWorkoutPlanDTO {
   name: string;

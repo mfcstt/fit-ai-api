@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
-import type { WorkoutRepository } from "../repositories/workout-repository";
+import type { WorkoutRepository } from "../repositories/workout-repository.js";
 
 dayjs.extend(utc);
 

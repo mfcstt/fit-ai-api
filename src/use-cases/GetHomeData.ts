@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
-import { NotFoundError } from "../errors/error";
-import type { WorkoutRepository } from "../repositories/workout-repository";
-import type { WeekDay } from "../generated/prisma/enums";
+import { NotFoundError } from "../errors/error.js";
+import type { WorkoutRepository } from "../repositories/workout-repository.js";
+import type { WeekDay } from "../generated/prisma/enums.js";
 
 dayjs.extend(utc);
 
@@ -14,7 +14,7 @@ interface Input {
 
 interface Output {
   activeWorkoutPlanId: string;
-  todayWorkoutDay? : {
+  todayWorkoutDay?: {
     workoutPlanId: string;
     id: string;
     name: string;
@@ -141,18 +141,21 @@ export class GetHomeData {
 
     return {
       activeWorkoutPlanId: activePlan.id,
-      todayWorkoutDay: todayWorkoutDay ? {
-        workoutPlanId: todayWorkoutDay.workoutPlanId,
-        id: todayWorkoutDay.id,
-        name: WEEK_DAY_NAMES[currentWeekDay],
-        isRest: todayWorkoutDay.isRest,
-        weekDay: todayWorkoutDay.weekDay,
-        estimatedDurationInSeconds: todayWorkoutDay.estimatedDurationInSeconds,
-        ...(todayWorkoutDay.coverImageUrl
-          ? { coverImageUrl: todayWorkoutDay.coverImageUrl }
-          : {}),
-        exercisesCount: todayWorkoutDay.exercisesCount,
-      } : undefined,
+      todayWorkoutDay: todayWorkoutDay
+        ? {
+            workoutPlanId: todayWorkoutDay.workoutPlanId,
+            id: todayWorkoutDay.id,
+            name: WEEK_DAY_NAMES[currentWeekDay],
+            isRest: todayWorkoutDay.isRest,
+            weekDay: todayWorkoutDay.weekDay,
+            estimatedDurationInSeconds:
+              todayWorkoutDay.estimatedDurationInSeconds,
+            ...(todayWorkoutDay.coverImageUrl
+              ? { coverImageUrl: todayWorkoutDay.coverImageUrl }
+              : {}),
+            exercisesCount: todayWorkoutDay.exercisesCount,
+          }
+        : undefined,
       workoutStreak,
       consistencyByDay,
     };

@@ -5,13 +5,13 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 
-import { generateDocumentation } from "./docs/swagger";
-import { auth } from "./lib/auth";
-import { homeRoutes } from "./routes/home";
-import { workoutPlanRoutes } from "./routes/workout-plan";
-import { statsRoutes } from "./routes/stats";
-import { meRoutes } from "./routes/me";
-import { aiRoutes } from "./routes/ai";
+import { generateDocumentation } from "./docs/swagger.js";
+import { auth } from "./lib/auth.js";
+import { homeRoutes } from "./routes/home.js";
+import { workoutPlanRoutes } from "./routes/workout-plan.js";
+import { statsRoutes } from "./routes/stats.js";
+import { meRoutes } from "./routes/me.js";
+import { aiRoutes } from "./routes/ai.js";
 import { fastifyCors } from "@fastify/cors";
 
 export const app = Fastify({

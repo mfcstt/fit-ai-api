@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 
-import type { WeekDay } from "../generated/prisma/enums";
-import { ForbiddenError, NotFoundError } from "../errors/error";
-import type { WorkoutRepository } from "../repositories/workout-repository";
+import type { WeekDay } from "../generated/prisma/enums.js";
+import { ForbiddenError, NotFoundError } from "../errors/error.js";
+import type { WorkoutRepository } from "../repositories/workout-repository.js";
 
 interface Input {
   userId: string;

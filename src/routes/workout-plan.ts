@@ -2,8 +2,12 @@ import { fromNodeHeaders } from "better-auth/node";
 import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 
-import { ConflictError, ForbiddenError, NotFoundError } from "../errors/error";
-import { auth } from "../lib/auth";
+import {
+  ConflictError,
+  ForbiddenError,
+  NotFoundError,
+} from "../errors/error.js";
+import { auth } from "../lib/auth.js";
 import {
   ErrorSchema,
   GetWorkoutDayByIdParamsSchema,
@@ -16,12 +20,12 @@ import {
   UpdateWorkoutSessionParamsSchema,
   UpdateWorkoutSessionResponseSchema,
   WorkoutPlanSchema,
-} from "../schema";
-import { makeCreateWorkoutPlan } from "../use-cases/factories/make-create-workout-plan";
-import { makeGetWorkoutDayById } from "../use-cases/factories/make-get-workout-day-by-id";
-import { makeGetWorkoutPlanById } from "../use-cases/factories/make-get-workout-plan-by-id";
-import { makeStartWorkoutSession } from "../use-cases/factories/make-start-workout-session";
-import { makeUpdateWorkoutSession } from "../use-cases/factories/make-update-workout-session";
+} from "../schema/index.js";
+import { makeCreateWorkoutPlan } from "../use-cases/factories/make-create-workout-plan.js";
+import { makeGetWorkoutDayById } from "../use-cases/factories/make-get-workout-day-by-id.js";
+import { makeGetWorkoutPlanById } from "../use-cases/factories/make-get-workout-plan-by-id.js";
+import { makeStartWorkoutSession } from "../use-cases/factories/make-start-workout-session.js";
+import { makeUpdateWorkoutSession } from "../use-cases/factories/make-update-workout-session.js";
 
 export async function workoutPlanRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().route({

@@ -1,4 +1,4 @@
-import type { UserTrainDataRepository } from "../repositories/user-train-data-repository";
+import type { UserTrainDataRepository } from "../repositories/user-train-data-repository.js";
 
 interface InputDto {
   userId: string;

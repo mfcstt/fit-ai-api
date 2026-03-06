@@ -1,5 +1,9 @@
-import { ConflictError, ForbiddenError, NotFoundError } from "../errors/error";
-import type { WorkoutRepository } from "../repositories/workout-repository";
+import {
+  ConflictError,
+  ForbiddenError,
+  NotFoundError,
+} from "../errors/error.js";
+import type { WorkoutRepository } from "../repositories/workout-repository.js";
 
 interface Input {
   userId: string;

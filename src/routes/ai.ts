@@ -11,11 +11,11 @@ import {
 import z from "zod";
 
 import { WeekDay } from "../generated/prisma/enums.js";
-import { auth } from "../lib/auth";
-import { makeCreateWorkoutPlan } from "../use-cases/factories/make-create-workout-plan";
-import { makeGetUserTrainData } from "../use-cases/factories/make-get-user-train-data";
-import { makeListWorkoutPlans } from "../use-cases/factories/make-list-workout-plans";
-import { makeUpsertUserTrainData } from "../use-cases/factories/make-upsert-user-train-data";
+import { auth } from "../lib/auth.js";
+import { makeCreateWorkoutPlan } from "../use-cases/factories/make-create-workout-plan.js";
+import { makeGetUserTrainData } from "../use-cases/factories/make-get-user-train-data.js";
+import { makeListWorkoutPlans } from "../use-cases/factories/make-list-workout-plans.js";
+import { makeUpsertUserTrainData } from "../use-cases/factories/make-upsert-user-train-data.js";
 
 const aiSystemPrompt = `Você é um personal trainer virtual especialista em montar planos de treino.
 

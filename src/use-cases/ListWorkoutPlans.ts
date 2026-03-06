@@ -1,4 +1,4 @@
-import type { WorkoutRepository } from "../repositories/workout-repository";
+import type { WorkoutRepository } from "../repositories/workout-repository.js";
 
 interface InputDto {
   userId: string;

@@ -51,11 +51,11 @@ Princípios gerais:
 
 coverImageUrl (obrigatório em todos os dias):
 - Dias de foco superior (peito, costas, ombros, bíceps, tríceps, push, pull, upper, full body):
-  1) https://gw8hy3fdcv.ufs.sh/f/ccoBDpLoAPCO3y8pQ6GBg8iqe9pP2JrHjwd1nfKtVSQskI0v
-  2) https://gw8hy3fdcv.ufs.sh/f/ccoBDpLoAPCOW3fJmqZe4yoUcwvRPQa8kmFprzNiC30hqftL
+  1) https://i.pinimg.com/736x/9f/77/90/9f77903b3a6487be622faab2c39840c1.jpg
+  2) https://i.pinimg.com/736x/e0/ac/c4/e0acc4422551a85fcb9e8baad8ca8167.jpg
 - Dias de foco inferior (pernas, glúteos, quadríceps, posterior, panturrilha, legs, lower):
-  1) https://gw8hy3fdcv.ufs.sh/f/ccoBDpLoAPCOgCHaUgNGronCvXmSzAMs1N3KgLdE5yHT6Ykj
-  2) https://gw8hy3fdcv.ufs.sh/f/ccoBDpLoAPCO85RVu3morROwZk5NPhs1jzH7X8TyEvLUCGxY
+  1) https://i.pinimg.com/736x/f1/a2/8f/f1a28ffee3fdc8aa4a1501ce18d37787.jpg
+  2) https://i.pinimg.com/736x/0b/01/fa/0b01fa8f2c3430648d3524c75cb3cca8.jpg
 - Alterne entre as 2 opções de cada categoria para variar.
 - Dias de descanso usam imagem de superior.`;
 
